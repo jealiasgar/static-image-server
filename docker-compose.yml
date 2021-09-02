@@ -17,6 +17,7 @@ services:
         ports:
             - 80:80
         volumes:
+            - /etc/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
             - /etc/nginx/sites-available/default:/etc/nginx/sites-available/default
         networks:
             - default-network
