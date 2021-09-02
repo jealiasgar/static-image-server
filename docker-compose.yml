@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+    app:
+        container_name: app
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 3000:3000
+        networks:
+            - default-network
+    nginx:
+        container_name: webserver
+        image: nginx:latest
+        restart: unless-stopped
+        ports:
+            - 80:80
+        volumes:
+            - /etc/nginx/sites-available/default:/etc/nginx/nginx.conf
+        networks:
+            - default-network
+networks:
+    default-network:
+        driver: bridge
