@@ -7,8 +7,8 @@ COPY . /usr/src/app/
 
 RUN npm install
 
-RUN npm install
+RUN npm install pm2 -g
 
 EXPOSE 3000
 
-CMD node app.js --error /usr/src/logs/err.log --output /usr/src/logs/out.log -- run --color=always
+CMD [ "pm2-runtime", "start", "app.js" ]
