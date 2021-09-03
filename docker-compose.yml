@@ -11,7 +11,7 @@ services:
         networks:
             - default-network
         links:
-            - localhost:nginx
+            - nginx:localhost
     nginx:
         container_name: webserver
         image: nginx
