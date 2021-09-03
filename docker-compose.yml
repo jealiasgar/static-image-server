@@ -10,6 +10,8 @@ services:
             - 3000:3000
         networks:
             - default-network
+        links:
+            - localhost:nginx
     nginx:
         container_name: webserver
         image: nginx
