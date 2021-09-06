@@ -18,9 +18,17 @@ app.get("*", function (req, res) {
 			res.set("Content-Type", "text/plain")
 			res.status(404).end("Not found")
 		})
-	} else if (urlArr.length === 2 && urlArr[0] !== "id") {
-		let w = Number(urlArr[0])
-		let h = Number(urlArr[1])
+	} else if (urlArr.length === 2 && typeof urlArr[0] !== "string") {
+		createFile(Number(urlArr[0]), Number(urlArr[1]))
+	} else if (urlArr.length === 1 && typeof urlArr[0] !== "string") {
+		createFile(Number(urlArr[0]), Number(urlArr[0]))
+	} else {
+		res.status(404).end("Not Found")
+	}
+
+	function createFile(w, h) {
+		// let w = Number(urlArr[0])
+		// let h = Number(urlArr[1])
 		let inputString = `./public/${random}_${w}_${h}.jpg`
 
 		let inStream = fs.createReadStream(imageData[random])
@@ -41,8 +49,6 @@ app.get("*", function (req, res) {
 			})
 
 		inStream.pipe(transform).pipe(outStream)
-	} else {
-		res.status(404).end("Not Found")
 	}
 })
 
