@@ -18,9 +18,9 @@ app.get("*", function (req, res) {
 			res.set("Content-Type", "text/plain")
 			res.status(404).end("Not found")
 		})
-	} else if (urlArr.length === 2 && typeof Number(urlArr[0]) !== "string") {
+	} else if (urlArr.length === 2 && !isNaN(Number(urlArr[0]))) {
 		createFile(Number(urlArr[0]), Number(urlArr[1]))
-	} else if (urlArr.length === 1 && typeof Number(urlArr[0]) !== "string") {
+	} else if (urlArr.length === 1 && !isNaN(Number(urlArr[0]))) {
 		createFile(Number(urlArr[0]), Number(urlArr[0]))
 	} else {
 		res.status(404).end("Not Found")
@@ -43,6 +43,7 @@ app.get("*", function (req, res) {
 
 		let transform = sharp()
 			.resize({ width: w, height: h })
+			// .pipelineColourspace("rgb16")
 			.on("info", function () {
 				res.set("Content-Type", "image/jpeg")
 				inStream.pipe(transform).pipe(res)
