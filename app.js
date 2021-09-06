@@ -18,9 +18,9 @@ app.get("*", function (req, res) {
 			res.set("Content-Type", "text/plain")
 			res.status(404).end("Not found")
 		})
-	} else if (urlArr.length === 2 && typeof urlArr[0] !== "string") {
+	} else if (urlArr.length === 2 && typeof Number(urlArr[0]) !== "string") {
 		createFile(Number(urlArr[0]), Number(urlArr[1]))
-	} else if (urlArr.length === 1 && typeof urlArr[0] !== "string") {
+	} else if (urlArr.length === 1 && typeof Number(urlArr[0]) !== "string") {
 		createFile(Number(urlArr[0]), Number(urlArr[0]))
 	} else {
 		res.status(404).end("Not Found")
