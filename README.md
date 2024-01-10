@@ -13,4 +13,4 @@ Once the server is up, you can go to:
 5. localhost:3000?grayscale&blur - Get a random image from the server with default width and height and filter of grayscale applied and blur of default value applied.
 6. localhost:3000?blur=10 - Get a random image from the server with default width and height and blur of value 10 applied (The value must be between 0.3 to 20).
 
-Note: The filters can be applied by specifying the width and height as well.
+Note: The filters can be applied by specifying the width and height as well.....
